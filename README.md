@@ -1,6 +1,7 @@
 ## 概要
 
 [FastAPI](https://fastapi.tiangolo.com/ja/)の**シンプルなサンプルコード**の紹介です。
+コード一式は、下記にあります。確認するためには、[Download ZIP](https://github.com/SaitoTsutomu/fastapi-book-sample/archive/refs/heads/master.zip)からZIPをダウンロードしてください。
 
 https://github.com/SaitoTsutomu/fastapi-book-sample
 
@@ -10,20 +11,20 @@ APIは`src`ディレクトリにあり、下記の5つのファイルからな�
 
 - `main.py`：FastAPIのインスタンス（app）を作成しています。
 - `database.py`：[SQLAlchemy ORM](https://docs.sqlalchemy.org/en/20/orm/)のクラスとセッションを返す関数（get_db）を定義しています。
-- `functions.py`：データベースを処理する11機能を定義しています。
+- `functions.py`：データベースを操作する11機能を定義しています。
 - `schemas.py`：APIで扱うpydanticのクラスを定義しています。
 - `routers.py`：パスオペレーション関数を定義しています。
 
 ## テーブルとカラム
 
-APIでは、SQLiteの著者テーブルと書籍テーブルを処理します。
+APIでは、SQLiteの著者テーブルと書籍テーブルを操作します。
 
 - 著者（Author）：ID（id）、名前（name）、書籍（books）
 - 書籍（Book）：ID（id）、名前（name）、著者ID（author_id）、著者（author）
 
 ## 機能
 
-11の機能があります。
+2つの表を操作する11の機能があります。
 
 | method | パス                          | 関数              | 説明           |
 | :----- | :---------------------------- | :---------------- | :------------- |
@@ -127,3 +128,5 @@ class Author(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 ```
+
+以上
