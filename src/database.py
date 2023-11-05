@@ -30,8 +30,8 @@ class Book(MappedAsDataclass, Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str] = mapped_column(String(32))
-    author_id: Mapped[int | None] = mapped_column(ForeignKey("author.id"))
-    author: Mapped[Author | None] = relationship(Author)
+    author_id: Mapped[int] = mapped_column(ForeignKey("author.id"))
+    author: Mapped[Author] = relationship(Author)
 
 
 engine = create_async_engine("sqlite+aiosqlite:///db.sqlite3", echo=True)

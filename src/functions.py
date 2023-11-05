@@ -24,11 +24,11 @@ async def add_book(name: str, author_id: int, db: AsyncSession) -> Book | None:
     return book
 
 
-async def get_all_authors(db: AsyncSession):
+async def get_authors(db: AsyncSession):
     return await db.scalars(select(Author))
 
 
-async def get_all_books(db: AsyncSession):
+async def get_books(db: AsyncSession):
     return await db.scalars(select(Book))
 
 
@@ -40,7 +40,7 @@ async def get_book(book_id: int, db: AsyncSession) -> Book | None:
     return await db.get(Book, book_id)
 
 
-async def get_book_with_author(book_id: int, db: AsyncSession) -> Book | None:
+async def book_details(book_id: int, db: AsyncSession) -> Book | None:
     return await db.scalar(
         select(Book).where(Book.id == book_id).options(selectinload(Book.author))
     )

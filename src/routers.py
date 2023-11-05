@@ -23,14 +23,14 @@ async def add_book(name: str, author_id: int, db: AsyncSession = Depends(get_db)
 
 
 @router.get("/authors", tags=["/authors"])
-async def get_all_authors(db: AsyncSession = Depends(get_db)) -> list[Author]:
-    authors = await functions.get_all_authors(db)
+async def get_authors(db: AsyncSession = Depends(get_db)) -> list[Author]:
+    authors = await functions.get_authors(db)
     return list(map(Author.model_validate, authors))
 
 
 @router.get("/books", tags=["/books"])
-async def get_all_books(db: AsyncSession = Depends(get_db)) -> list[Book]:
-    books = await functions.get_all_books(db)
+async def get_books(db: AsyncSession = Depends(get_db)) -> list[Book]:
+    books = await functions.get_books(db)
     return list(map(Book.model_validate, books))
 
 
@@ -51,8 +51,8 @@ async def get_book(book_id: int, db: AsyncSession = Depends(get_db)) -> Book:
 
 
 @router.get("/books/{book_id}/details", tags=["/books"])
-async def get_book_with_author(book_id: int, db: AsyncSession = Depends(get_db)) -> BookDetails:
-    book = await functions.get_book_with_author(book_id, db)
+async def book_details(book_id: int, db: AsyncSession = Depends(get_db)) -> BookDetails:
+    book = await functions.book_details(book_id, db)
     if book is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Unknown book_id")
     return BookDetails.model_validate(book)
