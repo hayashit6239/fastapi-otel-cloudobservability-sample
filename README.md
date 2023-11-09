@@ -13,8 +13,13 @@ https://github.com/SaitoTsutomu/fastapi-book-sample
 
 著者テーブルと書籍テーブルを操作します。データベースは、SQLiteを使います。
 
-- 著者（Author）：ID（id）、名前（name）、書籍（books）
-- 書籍（Book）：ID（id）、名前（name）、著者ID（author_id）、著者（author）
+| テーブル         | カラム                                                              |
+| :--------------- | :------------------------------------------------------------------ |
+| 著者（`Author`） | ID（`id`）、名前（`name`）、書籍（`books`）                         |
+| 書籍（`Book`）   | ID（`id`）、名前（`name`）、著者ID（`author_id`）、著者（`author`） |
+
+- `Book.author_id`は、`Author.id`の外部キーです。
+- `Author.books`と`Book.author`は、リレーション用です。
 
 ## 機能
 
