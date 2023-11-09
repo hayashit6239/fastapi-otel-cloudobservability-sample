@@ -1,13 +1,17 @@
 ## 概要
 
-[FastAPI](https://fastapi.tiangolo.com/ja/)の**シンプルなサンプルコード**の紹介です。
+[FastAPI](https://fastapi.tiangolo.com/ja/)の**シンプルなサンプルコード**を紹介します。
+
 コード一式は、下記にあります。すべてを確認するためには、[Download ZIP](https://github.com/SaitoTsutomu/fastapi-book-sample/archive/refs/heads/master.zip)からZIPをダウンロードしてください。
 
 https://github.com/SaitoTsutomu/fastapi-book-sample
 
+最初に、テーブルと機能を説明し、続いて、環境構築や実行方法を説明します。
+最後に、ファイル構成と、抜粋したコードや補足の説明をします。
+
 ## テーブルとカラム
 
-APIでは、SQLiteの著者テーブルと書籍テーブルを操作します。
+著者テーブルと書籍テーブルを操作します。データベースは、SQLiteを使います。
 
 - 著者（Author）：ID（id）、名前（name）、書籍（books）
 - 書籍（Book）：ID（id）、名前（name）、著者ID（author_id）、著者（author）
@@ -30,8 +34,9 @@ APIでは、SQLiteの著者テーブルと書籍テーブルを操作します�
 | PUT    | `/books?book_id=*&name=*`     | `update_book()`   | 指定書籍の更新 |
 | DELETE | `/books?book_id=*`            | `delete_book()`   | 指定書籍の削除 |
 
-- 書籍を追加するには、親となる書籍が必要です
-- 指定の著者を削除すると、対応する書籍も削除されます
+- 著者と書籍が親子構造になっています
+- 書籍を追加するには、親となる著者が必要です
+- 指定著者を削除すると、子供である書籍も削除されます
 
 ## 環境構築
 
