@@ -224,4 +224,8 @@ class Author(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 ```
 
+## 参考
+
+https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e
+
 以上
