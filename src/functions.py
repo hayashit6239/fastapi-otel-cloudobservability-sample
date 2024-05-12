@@ -4,6 +4,11 @@ from sqlalchemy.orm import selectinload
 
 from .database import Author, Book
 
+from opentelemetry import trace
+import logging
+import time
+
+tracer = trace.get_tracer_provider().get_tracer("book-service")
 
 async def add_author(name: str, db: AsyncSession) -> Author:
     author = Author(id=None, name=name, books=[])  # type: ignore
@@ -25,11 +30,21 @@ async def add_book(name: str, author_id: int, db: AsyncSession) -> Book | None:
 
 
 async def get_authors(db: AsyncSession):
-    return await db.scalars(select(Author))
+    with tracer.start_as_current_span(__name__) as span:
+        span.add_event(name="get_authors")
+        return await db.scalars(select(Author))
 
 
 async def get_books(db: AsyncSession):
-    return await db.scalars(select(Book))
+    with tracer.start_as_current_span(__name__) as span:
+        span.add_event(
+            name="select all books",
+            timestamp=int(time.time()),
+            attributes={
+                "sql": "select * from book"
+            }
+        )
+        return await db.scalars(select(Book))
 
 
 async def get_author(author_id: int, db: AsyncSession) -> Author | None:

@@ -1,0 +1,25 @@
+services:
+  fastapi:
+    image: fastapi-otel-cloudobservability-sample-fastapi:latest
+    build:
+      context: .
+      dockerfile: containers/fastapi/Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+     - "8000:8000"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://fastapi-otel-cloudobservability-sample-otel-collector-1:4317
+
+  otel-collector:
+    image: fastapi-otel-cloudobservability-sample-otel-collector:latest
+    build:
+      context: .
+      dockerfile: containers/otel-collector/Dockerfile
+    volumes:
+      - ./containers/otel-collector/otel-collector.yml:/etc/otel-collector.yml
+      - ./containers/otel-collector/application_default_credentials.json:/etc/application_default_credentials.json
+    ports:
+      - "4317:4317"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/etc/application_default_credentials.json
