@@ -2,7 +2,7 @@
 Python、OpenTelemetry、Google Cloud Observability でテレメトリーデータを可視化するためのリポジトリです。
 Web フレームワークは FastAPI を利用しています。
 
-![Cloud Trace](https://github.com/hayashit6239/react-training/assets/138541920/50a06d7e-2a14-471c-9bbe-8d97cdbf7ddf)
+![4ad7fc0e8325-20240507](https://github.com/hayashit6239/fastapi-otel-cloudobservability-sample/assets/138541920/c74502c6-5ccc-45c0-8c34-f2f43a1188eb)
 
 ## 環境とコード
 Google Cloud Console から起動できる Cloud Shell で動かすことを想定しています。
@@ -81,6 +81,6 @@ docker compose -f docker-compose.yml up
 ## FastAPI の挙動を Swagger で確認
 Cloud Shell のウェブでプレビュー機能を利用します、ポートを 8000 に変更して「ポート 8000 でプレビュー」をクリックします。別ブラウザが立ち上がるので、`https://8000-**.cloudshell.dev/` となっている URL を `https://8000-**.cloudshell.dev/docs` で Swagger を起動します。
 
-![Swagger](https://github.com/hayashit6239/react-training/assets/138541920/6a8edbea-8716-429a-a723-fd12da3280c3)
+![45dc1c30e6c2-20240506](https://github.com/hayashit6239/fastapi-otel-cloudobservability-sample/assets/138541920/5e1f30bc-47c8-4e29-a6da-9047b7867896)
 
 Swagger が起動できれば、あとは計装済みである Get Authors や Get Books を叩いて Google Cloud Observability で可視化したり、別の関数に追加の実装して遊んでみてください。
