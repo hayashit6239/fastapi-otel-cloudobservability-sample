@@ -7,10 +7,7 @@ Web フレームワークは FastAPI を利用しています。
 ## 環境とコード
 Google Cloud Console から起動できる Cloud Shell で動かすことを想定しています。
 
-サンプルコードは Fast API で構成されたアプリケーションに計装する形にしています。
-https://github.com/hayashit6239/fastapi-otel-cloudobservability-sample
-
-こちらのリポジトリのコードに関する詳細な内容はこちらの[記事]()を参照ください。
+こちらのリポジトリのコードに関する詳細な内容はこちらの[記事](https://zenn.dev/t_hayashi/articles/bf11a89d34fcc0)を参照ください。
 
 サンプルコードのベースは、SaitoTsutomu さんのコードを引用させていただいています。
 https://github.com/SaitoTsutomu/fastapi-book-sample
