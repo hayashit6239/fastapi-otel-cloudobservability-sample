@@ -1,4 +1,4 @@
-from fnndsc/python-poetry:latest
+FROM fnndsc/python-poetry:latest
 
 ENTRYPOINT cd /app && \
            poetry install && \
